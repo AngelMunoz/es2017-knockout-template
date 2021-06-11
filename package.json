@@ -1,0 +1,23 @@
+{
+  "name": "knockout-modernish",
+  "version": "1.0.0",
+  "description": "",
+  "main": "imports.js",
+  "scripts": {
+    "start": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@snowpack/plugin-dotenv": "^2.1.0",
+    "snowpack": "^3.5.7"
+  },
+  "dependencies": {
+    "@shoelace-style/shoelace": "^2.0.0-beta.43",
+    "keyboardjs": "^2.6.4",
+    "knockout": "^3.5.1",
+    "navigo": "^8.11.1"
+  }
+}
