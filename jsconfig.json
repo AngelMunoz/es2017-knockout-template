@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "declaration": true,
+        "module": "es2015",
+        "moduleResolution": "node",
+        "target": "es2017",
+        "noImplicitUseStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noUncheckedIndexedAccess": true
+    },
+    "include": [
+        "src"
+    ],
+    "typeAcquisition": {
+        "enable": true
+    }
+}

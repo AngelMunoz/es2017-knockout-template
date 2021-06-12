@@ -1,5 +1,4 @@
 import * as ko from 'knockout';
-import keyboardJS from 'keyboardjs';
 const template = //html
   `
   <article>
@@ -20,50 +19,4 @@ class KoAbout { }
 ko.components.register('ko-about', {
   viewModel: KoAbout,
   template
-});
-
-keyboardJS.withContext('ko-about', () => {
-  let keys = '';
-  let timeoutid = null;
-
-  function cleankeys() {
-    keys = '';
-    clearTimeout(timeoutid);
-    timeoutid = null;
-  }
-
-  keyboardJS.bind('up', e => {
-    keys += 'up';
-    if (!timeoutid) {
-      timeoutid = setTimeout(() => cleankeys(), 5000);
-    }
-  });
-  keyboardJS.bind('down', e => {
-    if (!timeoutid) return;
-    keys += 'down';
-  });
-  keyboardJS.bind('left', e => {
-    if (!timeoutid) return;
-    keys += 'left';
-  });
-  keyboardJS.bind('right', e => {
-    if (!timeoutid) return;
-    keys += 'right';
-  });
-  keyboardJS.bind('b', e => {
-    if (!timeoutid) return;
-    keys += 'b';
-  });
-  keyboardJS.bind('a', e => {
-    if (!timeoutid) return;
-    keys += 'a';
-  });
-  keyboardJS.bind('enter', e => {
-    if (!timeoutid) return;
-    keys += 'enter';
-    if (keys === 'upupdowndownleftrightleftrightbaenter') {
-      alert('Nice, you found it');
-      cleankeys();
-    }
-  });
 });

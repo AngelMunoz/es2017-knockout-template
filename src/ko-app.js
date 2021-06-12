@@ -2,7 +2,6 @@ import './imports.js';
 import * as ko from 'knockout';
 import { pages } from './pages.js';
 import { router, addRoutes } from './router.js';
-import keyboardJS from 'keyboardjs';
 
 const template = //html
   `
@@ -13,8 +12,8 @@ const template = //html
 
 class KoApp {
   pageContent = ko.observable({
-    name: pages.Home,
-    params: null
+    name: pages[0].component,
+    params: {}
   });
 
   constructor() {
@@ -32,14 +31,15 @@ class KoApp {
     }));
     addRoutes(routes);
     router.notFound(this.routeHandler('ko-not-found'));
-    keyboardJS.watch();
     const location = router.getCurrentLocation();
     router.navigate(location.hashString);
   }
 
+  /**
+   * @param {string} componentTag
+   */
   routeHandler(componentTag) {
-    return match => {
-      keyboardJS.setContext(componentTag);
+    return (/** @type {import('navigo').Match} */ match) => {
       this.pageContent({
         name: componentTag,
         params: {
@@ -72,4 +72,5 @@ ko.components.register('ko-app', {
   template
 });
 
+//@ts-expect-error
 ko.applyBindings();

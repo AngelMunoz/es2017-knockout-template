@@ -1,3 +1,5 @@
+import SlCheckbox from '@shoelace-style/shoelace/dist/components/checkbox/checkbox';
+import SlInput from '@shoelace-style/shoelace/dist/components/input/input';
 import * as ko from 'knockout';
 import { TodoViewModel } from '../view-models/todo.vm.js';
 
@@ -27,14 +29,14 @@ const template = //html
             >Is Done?</sl-checkbox>
         </div>
         <div class="row center">
-          <sl-button submit>Save TODO</sl-button>
+          <sl-button type="primary" pill submit>Save TODO</sl-button>
         </div>
       </sl-form>
     </section>
-    <ul data-bind="foreach: todos">
-      <li>
+    <ul class="todo-list" data-bind="foreach: todos">
+      <li data-bind="css: { crossed: isDone }">
+        <sl-checkbox data-bind="event:{ 'sl-change': $parent.updateChecked.bind($parent) }, attr: { checked: isDone }"></sl-checkbox>
         <span data-bind="text: name"></span>
-        <span data-bind="text: isDone"></span>
         <sl-button type="text" data-bind="click: $parent.deleteTodo.bind($parent)">
           <sl-icon name="trash"></sl-icon>
         </sl-button>
@@ -49,18 +51,46 @@ class KoHome {
     this.todos = ko.observableArray([]);
   }
 
-  onFormSubmit(data, event) {
-    const [name, isDone] = event?.detail?.formControls;
-    this.currentTodo.name = name.value;
-    this.currentTodo.isDone = isDone.checked;
+  /**
+   * @param {any} _data
+   * @param {CustomEvent<{ formData: FormData; formControls: (HTMLElement | SlInput | SlCheckbox)[] }>} event
+   */
+  onFormSubmit(_data, event) {
+    const [
+      name,
+      /**
+       * @type {SlCheckbox}
+       */
+      isDone
+    ] = event?.detail?.formControls;
+
+    this.currentTodo.name =
+      /** @type {SlInput} */
+      (name).value;
+    this.currentTodo.isDone =
+      /** @type {SlCheckbox} */
+      (isDone).checked;
     this.todos.push(this.currentTodo);
     this.currentTodo = new TodoViewModel('', false);
   }
 
-  deleteTodo(data, event) {
-    console.log(data, event);
-    this.todos.remove(item => item.name === data.name);
+  /**
+   * @param {TodoViewModel} data
+   */
+  deleteTodo(data) {
+    this.todos.remove((/** @type {TodoViewModel} */ item) => item.name === data.name);
   }
+
+  /**
+   * @param {TodoViewModel} data
+   * @param {CustomEvent<{}>} event
+   */
+  updateChecked(data, event) {
+    data.isDone =
+      /** @type {SlCheckbox} */
+      (event.target).checked;
+  }
+
 }
 
 ko.components.register('ko-home', {

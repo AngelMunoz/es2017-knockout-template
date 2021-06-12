@@ -20,8 +20,11 @@ const template = //html
 `;
 
 class KoAppNavbar {
+  /**
+   * 
+   * @param {{ navItems?: { href: string; icon?: string; displayName: string }[] }} params 
+   */
   constructor({ navItems } = {}) {
-    console.log(navItems);
     this.navItems = navItems || [];
   }
 }

@@ -1,5 +1,9 @@
 import * as ko from 'knockout';
 export class TodoViewModel {
+  /**
+   * @param {string} name
+   * @param {boolean} isDone
+   */
   constructor(name, isDone) {
     this._name = ko.observable(name);
     this._isDone = ko.observable(isDone);

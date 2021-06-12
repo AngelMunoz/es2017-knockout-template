@@ -54,6 +54,35 @@ ko-app-navbar nav {
   margin: 1em auto;
 }
 
+.ko-home .todo-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ko-home .todo-list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 300px;
+}
+
+.ko-home .todo-list .crossed {
+  text-decoration: line-through;
+}
+
+.ko-home .todo-list li sl-button,
+.ko-home .todo-list li sl-checkbox {
+  flex: 0 1;
+}
+.ko-home .todo-list li span {
+  flex: 1 0;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
 @media (prefers-color-scheme: dark) {
   html,
   body {

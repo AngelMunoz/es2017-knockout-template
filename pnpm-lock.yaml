@@ -1,16 +1,14 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@shoelace-style/shoelace': ^2.0.0-beta.43
-  '@snowpack/plugin-dotenv': ^2.1.0
-  keyboardjs: ^2.6.4
-  knockout: ^3.5.1
-  navigo: ^8.11.1
-  snowpack: ^3.5.7
+  '@shoelace-style/shoelace': ~2.0.0-beta.43
+  '@snowpack/plugin-dotenv': ~2.1.0
+  knockout: ~3.5.1
+  navigo: ~8.11.1
+  snowpack: ~3.5.7
 
 dependencies:
   '@shoelace-style/shoelace': 2.0.0-beta.43
-  keyboardjs: 2.6.4
   knockout: 3.5.1
   navigo: 8.11.1
 
@@ -799,10 +797,6 @@ packages:
       json-schema: 0.2.3
       verror: 1.10.0
     dev: true
-
-  /keyboardjs/2.6.4:
-    resolution: {integrity: sha512-xDiNwiwH3KUqap++RFJiLAXzbvRB5Yw08xliuceOgLhM1o7g1puKKR9vWy6wp9H/Bi4VP0+SQMpiWXMWWmR6rA==}
-    dev: false
 
   /knockout/3.5.1:
     resolution: {integrity: sha512-wRJ9I4az0QcsH7A4v4l0enUpkS++MBx0BnL/68KaLzJg7x1qmbjSlwEoCNol7KTYZ+pmtI7Eh2J0Nu6/2Z5J/Q==}
